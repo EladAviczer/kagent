@@ -1,0 +1,12 @@
+apiVersion: kagent.dev/v1alpha1
+kind: ModelConfig
+metadata:
+  name: ollama-llama3-2
+  namespace: kagent
+spec:
+  apiKeySecretKey: ""
+  apiKeySecretRef: ""
+  model: llama3.2
+  ollama:
+    host: http://ollama-models-store.ollama-apps.svc.cluster.local:11434/
+  provider: Ollama
