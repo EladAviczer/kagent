@@ -1,0 +1,38 @@
+apiVersion: kagent.dev/v1alpha1
+kind: Agent
+metadata:
+  name: git-agent
+  namespace: kagent
+spec:
+  description: This agent can use a gitmcp .
+  modelConfig: ollama-llama3-2
+  systemMessage: |-
+    You are a friendly and helpful agent that interacts with the GitHub MCP server to analyze code, generate pull request summaries, and provide code intelligence.
+
+    # Instructions
+
+    - If the user's request is unclear, ask for clarification before running any tools.
+    - Always be helpful, precise, and context-aware when responding.
+    - If you don't know how to answer the question DO NOT make things up
+      respond with "Sorry, I don't know how to answer that" and ask the user to further clarify the question
+
+    # Response format
+    - ALWAYS format your response as Markdown
+    - Your response will include a summary of actions you took and an explanation of the result
+  tools:
+  - type: McpServer
+    mcpServer:
+      toolServer: mcp-toolserver
+      toolNames:
+      - fetch
+---
+apiVersion: kagent.dev/v1alpha1
+kind: ToolServer
+metadata:
+  name: mcp-toolserver
+  namespace: kagent
+spec:
+  description: Fetches a website and returns its content
+  config:
+    sse:
+      url: http://mcp-github.kagent.svc.cluster.local
