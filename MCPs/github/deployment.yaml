@@ -18,7 +18,6 @@ spec:
       containers:
         - name: mcp-github
           image: ghcr.io/github/github-mcp-server:latest
-          command: ["github-mcp-server","http","--sse","--port","8000"]
           imagePullPolicy: IfNotPresent
           env:
           - name: GITHUB_PERSONAL_ACCESS_TOKEN
