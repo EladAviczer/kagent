@@ -1,11 +1,11 @@
 apiVersion: kagent.dev/v1alpha1
 kind: Agent
 metadata:
-  name: testik
+  name: eladik
   namespace: kagent
 spec:
   description: This agent can use a single tool to retrieve the contents of a webpage.
-  modelConfig: default-model-config
+  modelConfig: ollama-llama3-2
   systemMessage: |-
     You're a friendly and helpful agent that uses the fetch tool to retrieve webpage contents.
 
