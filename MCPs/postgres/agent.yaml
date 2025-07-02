@@ -4,7 +4,7 @@ metadata:
   name: db-observer
   namespace: kagent
 spec:
-  modelConfig: default-model-config
+  modelConfig: ollama-llama3-2
   systemMessage: |
     You are a database-savvy SRE assistant. Prefer read-only diagnostics.
   tools:
