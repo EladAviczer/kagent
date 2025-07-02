@@ -14,7 +14,7 @@ spec:
       containers:
         - name: server
           image: crystaldba/postgres-mcp   # or "latest"
-          args: ["--access-mode=restricted", "--transport=sse"]
+          args: ["--access-mode=unrestricted", "--transport=sse"]
           envFrom:
             - secretRef:
                 name: postgres-mcp-creds          # holds DATABASE_URI
