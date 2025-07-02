@@ -1,0 +1,18 @@
+apiVersion: kagent.dev/v1alpha1
+kind: Agent
+metadata:
+  name: db-observer
+  namespace: kagent
+spec:
+  modelConfig: default-model-config
+  systemMessage: |
+    You are a database-savvy SRE assistant. Prefer read-only diagnostics.
+  tools:
+  - type: McpServer
+    mcpServer:
+      toolServer: postgres-mcp
+      toolNames:
+        - list_schemas
+        - list_objects
+        - get_object_details
+        - execute_sql      # still safe; write ops are blocked by --access-mode=restricted

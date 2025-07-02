@@ -1,0 +1,10 @@
+apiVersion: kagent.dev/v1alpha1
+kind: ToolServer
+metadata:
+  name: postgres-mcp
+  namespace: kagent
+spec:
+  description: "Read-only Postgres analysis tools (health, explain, index advice)"
+  config:
+    sse:
+      url: http://postgres-mcp.kagent.svc.cluster.local/sse
